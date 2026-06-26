@@ -1,0 +1,6 @@
+{
+  "name": "Duolingo de Programação",
+  "description": "Aprenda programação de forma divertida e gamificada como no Duolingo, com lições rápidas, IA, rankings e conquistas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
