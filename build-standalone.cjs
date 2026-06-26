@@ -7,7 +7,7 @@ try {
 
   // 1. Compile JS with esbuild to an IIFE bundle
   console.log("Step 1: Compiling application with esbuild...");
-  execSync('npx esbuild src/main.tsx --bundle --minify --format=iife --outfile=dist/test-bundle.js --external:./index.css', { stdio: 'inherit' });
+  execSync('npx esbuild src/main.tsx --bundle --minify --format=iife --outfile=dist/test-bundle.js --loader:.css=empty', { stdio: 'inherit' });
 
   // 2. Read the bundled JS
   console.log("Step 2: Reading bundled JS...");
@@ -45,10 +45,10 @@ try {
   </body>
 </html>`;
 
-  // 5. Write to both index.html and standalone.html
-  fs.writeFileSync('index.html', htmlContent);
+  // 5. Write to standalone.html and dist/index.html
   fs.writeFileSync('standalone.html', htmlContent);
-  console.log("Step 5: Successfully generated index.html and standalone.html!");
+  fs.writeFileSync(path.join(__dirname, 'dist', 'index.html'), htmlContent);
+  console.log("Step 5: Successfully generated standalone.html and dist/index.html!");
   console.log("=== COMPILATION COMPLETED SUCCESSFULLY ===");
 } catch (error) {
   console.error("Compilation failed:", error);
